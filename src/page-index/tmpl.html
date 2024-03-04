@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather App</title>
+    <style>
+        .weather {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<%= require('../common/nav.html?raw') %>
+<div class="card">
+    <div class="search">
+        <input type="text" pattern="[0-9]{5}" placeholder="Enter zip code" spellcheck="false">
+        <select id="country" name="cars">
+            <option value="us">United States</option>
+            <option value="ca">Canada</option>
+        </select>
+        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+    <div class="warning-area" style="margin-top: 10px; display: none">
+        Incorrect Zip Code Format
+    </div>
+    <div class="weather">
+        <div class="weather-icon">
+            <i></i>
+        </div>
+        <h1 class="temp"></h1>
+        <h2 class="city"></h2>
+        <div class="details">
+            <div class="col">
+                <i class="fa-solid fa-water"></i>
+                <div>
+                    <p class="humidity"></p>
+                    <p>Humidity</p>
+                </div>
+            </div>
+            <div class="col">
+                <i class="fa-solid fa-wind"></i>
+                <div>
+                    <p class="wind"></p>
+                    <p>Wind Speed</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
