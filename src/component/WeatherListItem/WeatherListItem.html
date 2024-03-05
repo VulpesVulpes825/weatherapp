@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.0/css/all.min.css">
+<style>
+    .weather-list-item {
+        width: 90%;
+        max-width: 700px;
+        background: linear-gradient(135deg, #00feba, #5b548a);
+        color: #fff;
+        margin: 100px auto 0;
+        border-radius: 20px;
+        padding: 40px 35px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .weather-city {
+        display: flex;
+        flex-direction: row;
+    }
+    .info-box {
+        padding-left: 20px;
+    }
+    .weather-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 75px;
+    }
+</style>
+<div class="weather-list-item">
+    <div class="weather-city">
+        <div class="weather-icon">
+            <i></i>
+        </div>
+        <div class="info-box">
+            <h1 class="city"></h1>
+            <h2 class="weather-condition"></h2>
+        </div>
+    </div>
+    <h1 class="temperature"></h1>
+</div>

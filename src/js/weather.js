@@ -14,6 +14,7 @@ export async function getWeather(lat, lon) {
                 appid: apiKey
             }
         });
+        console.log(weatherResponse.data);
         return weatherResponse.data;
     } catch (error) {
         console.error(error);
@@ -50,6 +51,8 @@ export  function weatherIcon(status) {
         return "fa-solid fa-sun";
     } else if (status === "Clouds") {
         return "fa-solid fa-cloud";
+    } else if (status === "Mist") {
+        return "fa-solid fa-water";
     }
 }
 

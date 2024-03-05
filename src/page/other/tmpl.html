@@ -5,19 +5,72 @@
     <title>Other Stuff</title>
 
     <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet"/>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            padding: 40px 35px;
+            text-align: center;
+            background: white;
+        }
+
+        .styled-table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            font-family: sans-serif;
+            min-width: 400px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+    </style>
 </head>
 <body>
 <%= require('../../common/nav.html?raw') %>
 
-<video id="vid1" class="video-js" data-setup='{}' id="my-video"
-       class="video-js"
-       controls
-       preload="auto"
-       width="640"
-       height="264">
-    <source src="https://vjs.zencdn.net/v/oceans.mp4">
-</video>
-<script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
+<div class="container">
+    <video id="vid1" class="video-js" data-setup='{}' id="my-video"
+           class="video-js"
+           controls
+           preload="auto"
+           width="640"
+           height="264">
+        <source src="https://vjs.zencdn.net/v/oceans.mp4">
+    </video>
+    <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
+
+    <a title="Jörg Braukmann, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons"
+       href="https://commons.wikimedia.org/wiki/File:Schloss_Sigmaringen_2022.jpg">
+        <img width="512"
+             alt="Schloss Sigmaringen 2022"
+             src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Schloss_Sigmaringen_2022.jpg/512px-Schloss_Sigmaringen_2022.jpg">
+    </a>
+
+    <table class="styled-table">
+        <tr>
+            <th>Company</th>
+            <th>Contact</th>
+            <th>Country</th>
+        </tr>
+        <tr>
+            <td>Costco</td>
+            <td>Andy Anders</td>
+            <td>United States</td>
+        </tr>
+        <tr>
+            <td>Microsoft</td>
+            <td>Bill Gates</td>
+            <td>Mexico</td>
+        </tr>
+    </table>
+
+    <form>
+        <label for="firstName">First name:</label><br>
+        <input type="text" id="firstName" name="firstName" value="Junyin"><br>
+        <label for="lastName">Last name:</label><br>
+        <input type="text" id="lastName" name="lastName" value="Chen"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+</div>
 
 </body>
 </html>
