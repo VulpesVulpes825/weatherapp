@@ -9,14 +9,28 @@ require("dotenv").config();
 module.exports = {
     devtool: 'source-map',
     entry: {
-        index: './src/page-index/main.js',
+        index: './src/page/index/main.js',
+        list: './src/page/list/main.js',
+        other: './src/page/other/main.js',
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/page-index/tmpl.html',
+            template: './src/page/index/tmpl.html',
             inject: true,
             chunks: ['index'],
             filename: 'index.html'
+        }),
+        new HtmlWebpackPlugin({
+            template: './src/page/list/tmpl.html',
+            inject: true,
+            chunks: ['list'],
+            filename: 'list.html'
+        }),
+        new HtmlWebpackPlugin({
+            template: './src/page/other/tmpl.html',
+            inject: true,
+            chunks: ['other'],
+            filename: 'other.html'
         }),
         new webpack.DefinePlugin({
             "process.env": {

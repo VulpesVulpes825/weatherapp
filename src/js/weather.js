@@ -1,6 +1,26 @@
 const axios = require("axios");
 
-async function getWeather(zipCode, countryCode) {
+const geoUrl = "https://api.openweathermap.org/geo/1.0/zip"
+const weatherUrl = "https://api.openweathermap.org/data/2.5/weather"
+const apiKey = process.env.API_KEY;
+
+export async function getWeather(lat, lon) {
+    try {
+        const weatherResponse = await axios.get(weatherUrl, {
+            params: {
+                lat: lat,
+                lon: lon,
+                units: "metric",
+                appid: apiKey
+            }
+        });
+        return weatherResponse.data;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export async function getGeo(zipCode, countryCode) {
     try {
         const geoResponse = await axios.get(geoUrl, {
             params: {
@@ -8,44 +28,28 @@ async function getWeather(zipCode, countryCode) {
                 appid: apiKey
             }
         });
-        const geoJson = geoResponse.data;
-        console.log(geoJson);
-
-        const weatherResponse = await axios.get(weatherUrl, {
-            params: {
-                lat: geoJson.lat,
-                lon: geoJson.lon,
-                units: "metric",
-                appid: apiKey
-            }
-        });
-
-        const weatherJson = weatherResponse.data;
-        console.log(weatherJson);
-
-        return weatherJson;
+        return geoResponse.data;
     } catch (error) {
         console.error(error);
     }
 }
 
-function weatherIcon(status) {
-    const weatherDiv = document.querySelector(".weather-icon > i")
+export  function weatherIcon(status) {
     // List based on https://openweathermap.org/weather-conditions#Weather-Condition-Codes-2
     if (status === "Thunderstorm") {
-        weatherDiv.className = "fa-solid fa-bolt-lightning";
+        return "fa-solid fa-bolt-lightning";
     } else if (status === "Drizzle") {
-        weatherDiv.className = "fa-solid fa-cloud-rain";
+        return "fa-solid fa-cloud-rain";
     } else if (status === "Rain") {
-        weatherDiv.className = "fa-solid fa-cloud-showers-heavy";
+        return "fa-solid fa-cloud-showers-heavy";
     } else if (status === "Snow") {
-        weatherDiv.className = "fa-solid fa-snowflake";
+        return "fa-solid fa-snowflake";
     } else if (status === "Atmosphere") {
-        weatherDiv.className = "fa-solid fa-smog";
+        return "fa-solid fa-smog";
     } else if (status === "Clear") {
-        weatherDiv.className = "fa-solid fa-sun";
+        return "fa-solid fa-sun";
     } else if (status === "Clouds") {
-        weatherDiv.className = "fa-solid fa-cloud";
+        return "fa-solid fa-cloud";
     }
 }
 
